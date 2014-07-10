@@ -16,19 +16,42 @@
 
 package com.graphaware.server;
 
+import com.graphaware.database.GraphAwareEmbeddedGraphDatabase;
 import com.graphaware.server.web.GraphAwareJetty9WebServer;
+import org.neo4j.kernel.EmbeddedGraphDatabase;
+import org.neo4j.kernel.GraphDatabaseAPI;
+import org.neo4j.kernel.InternalAbstractGraphDatabase;
 import org.neo4j.kernel.logging.Logging;
 import org.neo4j.server.CommunityNeoServer;
 import org.neo4j.server.configuration.Configurator;
+import org.neo4j.server.database.Database;
+import org.neo4j.server.database.LifecycleManagingDatabase;
 import org.neo4j.server.web.WebServer;
+
+import java.util.Map;
+
+import static org.neo4j.server.database.LifecycleManagingDatabase.*;
 
 /**
  *  {@link org.neo4j.server.CommunityNeoServer} that uses {@link com.graphaware.server.web.GraphAwareJetty9WebServer}.
  */
 public class GraphAwareCommunityNeoServer extends CommunityNeoServer {
 
+    public static final GraphFactory GA_EMBEDDED = new GraphFactory()
+    {
+        @Override
+        public GraphDatabaseAPI newGraphDatabase( String storeDir, Map<String,String> params, InternalAbstractGraphDatabase.Dependencies dependencies )
+        {
+            return new GraphAwareEmbeddedGraphDatabase( storeDir, params, dependencies );
+        }
+    };
+
     public GraphAwareCommunityNeoServer(Configurator configurator, Logging logging) {
-        super(configurator, logging);
+        super(configurator, lifecycleManagingDatabase(GA_EMBEDDED) ,logging);
+    }
+
+    public GraphAwareCommunityNeoServer(Configurator configurator, Database.Factory dbFactory, Logging logging) {
+        super(configurator, dbFactory, logging);
     }
 
     /**

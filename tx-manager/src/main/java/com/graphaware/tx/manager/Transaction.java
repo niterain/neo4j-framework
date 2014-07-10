@@ -35,12 +35,16 @@ public class Transaction implements Guard.GuardInternal, org.neo4j.graphdb.Trans
 
     private boolean running = true;
 
-    public Transaction(TransactionManagerImpl manager, GraphDatabaseService database) {
+    public Transaction(TransactionManagerImpl manager,  org.neo4j.graphdb.Transaction transaction) {
         this.uuid = UUID.randomUUID();
         this.started = System.currentTimeMillis();
-        this.transaction = database.beginTx();
+        this.transaction = transaction;
         this.manager = manager;
         this.thread = Thread.currentThread();
+    }
+
+    public Transaction(TransactionManagerImpl manager, GraphDatabaseService database) {
+        this(manager, database.beginTx());
     }
 
     @Override

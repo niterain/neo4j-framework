@@ -5,6 +5,8 @@ import java.util.UUID;
 
 public interface TransactionManager {
 
+    Transaction begunTx(org.neo4j.graphdb.Transaction transaction);
+
     /**
      * Starts a new GraphAware Transaction.
      * @return a new GraphAware Transaction, encapsulating a Neo4J transaction

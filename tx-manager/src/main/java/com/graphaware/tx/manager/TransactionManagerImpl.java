@@ -35,11 +35,22 @@ public class TransactionManagerImpl implements TransactionManager {
         this.guard = ((GraphDatabaseAPI) database).getDependencyResolver().resolveDependency(Guard.class);
     }
 
+    @Override
+    public Transaction begunTx(org.neo4j.graphdb.Transaction transaction) {
+        Transaction tx = new Transaction(this, transaction);
+        doBegin(tx);
+        return tx;
+    }
+
     public Transaction beginTx() {
         Transaction tx = new Transaction(this, database);
+        doBegin(tx);
+        return tx;
+    }
+
+    private void doBegin(Transaction tx) {
         guard.start(tx);
         transactionRegister.put(tx);
-        return tx;
     }
 
     public Collection<Transaction> list() {

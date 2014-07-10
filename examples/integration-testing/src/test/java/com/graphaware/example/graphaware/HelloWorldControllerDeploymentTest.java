@@ -30,7 +30,8 @@ import static org.junit.Assert.assertEquals;
 public class HelloWorldControllerDeploymentTest extends NeoServerIntegrationTest {
 
     @Test
-    public void shouldCreateAndReturnNode() {
+    public void shouldCreateAndReturnNode() throws InterruptedException {
+        Thread.sleep(1000000);
         assertEquals("0", TestUtils.post(baseUrl() + "/graphaware/helloworld/create", 200));
     }
 }

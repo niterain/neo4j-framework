@@ -33,19 +33,19 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.graphaware.neo4j</groupId>
-            <artifactId>runtime</artifactId>
-            <version>${graphaware.version}</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.graphaware.neo4j</groupId>-->
+            <!--<artifactId>runtime</artifactId>-->
+            <!--<version>${graphaware.version}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.graphaware.neo4j</groupId>
-            <artifactId>tx-api</artifactId>
-            <version>${graphaware.version}</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.graphaware.neo4j</groupId>-->
+            <!--<artifactId>tx-api</artifactId>-->
+            <!--<version>${graphaware.version}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
         <!-- Spring Framework -->
         <dependency>
@@ -78,19 +78,19 @@
         </dependency>
 
         <!-- Testing -->
-        <dependency>
-            <groupId>com.graphaware.neo4j</groupId>
-            <artifactId>server-community</artifactId>
-            <version>${graphaware.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.graphaware.neo4j</groupId>-->
+            <!--<artifactId>server-community</artifactId>-->
+            <!--<version>${graphaware.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.graphaware.neo4j</groupId>
-            <version>${graphaware.version}</version>
-            <artifactId>tests</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.graphaware.neo4j</groupId>-->
+            <!--<version>${graphaware.version}</version>-->
+            <!--<artifactId>tests</artifactId>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>junit</groupId>

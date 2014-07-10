@@ -2,6 +2,7 @@ package com.graphaware.tx.manager.api;
 
 import com.graphaware.tx.manager.Transaction;
 import com.graphaware.tx.manager.TransactionManager;
+import com.graphaware.tx.manager.TransactionManagerAwareDatabase;
 import com.graphaware.tx.manager.TransactionManagerImpl;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,8 @@ public class TransactionManagerController {
 
     @Autowired
     public TransactionManagerController(GraphDatabaseService database) {
-        transactionMonitor = new TransactionManagerImpl(database);
+//        transactionMonitor = new TransactionManagerImpl(database);
+        transactionMonitor = ((TransactionManagerAwareDatabase) database).getTransactionManager();
     }
 
     @RequestMapping(method = RequestMethod.GET)
